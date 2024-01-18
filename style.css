@@ -1,0 +1,49 @@
+body, html {
+    height: 100%;
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #5a1111, #3a023b);
+}
+
+.spiral {
+    display: flex;
+    top: 300px;
+    gap: 10px;
+    position: absolute;
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes spiral {
+    0% {
+        --angle: 360deg;
+    }
+    100% {
+        --angle: 0deg;
+    }
+}
+
+input {
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    margin-top: 10%;
+    letter-spacing: 1em;
+    color: rgb(109, 14, 14);
+}
+
+.character {
+    color: white;
+    font-size: 2em;
+    transform: translateY(calc(sin(var(--angle)) * -80px)) scale(calc(cos(var(--angle)) * 0.5 + 0.5));
+    animation: spiral 4s linear infinite;
+}
+
